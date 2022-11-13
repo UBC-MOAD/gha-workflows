@@ -1,0 +1,61 @@
+# Reusable workflow to do repo checkout, build env, run pytest w/ coverage,
+# upload coverage report to Codecov, and send job status notification to Slack
+
+name: pytest-with-coverage
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
+      conda-env-file:
+        required: true
+        type: string
+      conda-env-name:
+        required: true
+        type: string
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: true
+
+jobs:
+  pytest-with-coverage:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@3b0f2504dd76ef23b6d31f291f4913fb60ab5ff3
+        with:
+           miniforge-variant: Mambaforge-pypy3
+           miniforge-version: latest
+           use-mamba: true
+           auto-update-conda: true
+           auto-activate-base: false
+           channels: conda-forge,nodefaults
+           channel-priority: true
+           python-version: ${{ inputs.python-version }}
+           environment-file: ${{ inputs.conda-env-file }}
+           activate-environment: ${{ inputs.conda-env-name }}
+
+      - name: pytest package with coverage
+        shell: bash -l {0}
+        run: |
+          pytest --cov=$GITHUB_WORKSPACE --cov-report=xml
+
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+        with:
+          file: ./coverage.xml
+          flags: unittests
+
+      - name: Send job status notification to Slack
+        uses: 8398a7/action-slack@a189acbf0b7ea434558662ae25a0de71df69a435
+        with:
+          status: ${{ job.status }}
+          author_name: Python ${{ inputs.python-version }} pytest & coverage report
+          fields: repo,eventName,ref,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
