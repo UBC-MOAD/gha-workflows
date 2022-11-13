@@ -10,7 +10,13 @@ jobs:
     name: upload coverage report
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+      - name: Retrieve coverage report
+        uses: actions/download-artifact@v3
         with:
-          file: ./coverage.xml
+          name: coverage-report
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+        with:
+          file: coverage.xml
           flags: unittests
