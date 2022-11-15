@@ -1,0 +1,56 @@
+# Reusable workflow to run Sphinx linkcheck on docs,
+# and send job status notification to Slack
+
+name: sphinx-linkcheck
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
+      conda-env-file:
+        required: true
+        type: string
+      conda-env-name:
+        required: true
+        type: string
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: true
+
+jobs:
+  sphinx-linkcheck:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@3b0f2504dd76ef23b6d31f291f4913fb60ab5ff3
+        with:
+           miniforge-variant: Mambaforge-pypy3
+           miniforge-version: latest
+           use-mamba: true
+           auto-update-conda: true
+           auto-activate-base: false
+           channels: conda-forge,nodefaults
+           channel-priority: true
+           python-version: ${{ inputs.python-version }}
+           environment-file: ${{ inputs.conda-env-file }}
+           activate-environment: ${{ inputs.conda-env-name }}
+
+      - name: linkcheck docs
+        shell: bash -l {0}
+        run: |
+          (cd docs && make linkcheck)
+
+      - name: Send job status notification to Slack
+        uses: 8398a7/action-slack@a189acbf0b7ea434558662ae25a0de71df69a435
+        with:
+          status: ${{ job.status }}
+          author_name: Sphinx linkcheck
+          fields: repo,eventName,ref,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
