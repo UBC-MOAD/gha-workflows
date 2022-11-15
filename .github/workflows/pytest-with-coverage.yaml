@@ -23,7 +23,8 @@ jobs:
   pytest-with-coverage:
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@3b0f2504dd76ef23b6d31f291f4913fb60ab5ff3
