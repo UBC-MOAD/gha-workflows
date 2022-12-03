@@ -9,9 +9,6 @@ on:
       language:
         required: true
         type: string
-    secrets:
-      SLACK_WEBHOOK_URL:
-        required: true
 
 jobs:
   codeql-analysis:
