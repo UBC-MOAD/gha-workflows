@@ -6,3 +6,16 @@
 
 
 Reusable GitHub Actions workflows for MOAD repositories and workflow management tools
+
+## Changes
+
+### 2-Dec-2022
+
+Changed to rely on the Slack github app workflows subscription feature to send workflow status 
+notifications to Slack instead of the 8398a7/action-slack action.
+
+Enable that feature with:
+
+`/github subscribe org/repo workflows:{event:"pull_request","push" branch:"main"}`
+
+ref: https://github.com/integrations/slack#actions-workflow-notifications

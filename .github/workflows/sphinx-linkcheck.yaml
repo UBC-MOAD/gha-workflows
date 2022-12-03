@@ -44,13 +44,3 @@ jobs:
         shell: bash -l {0}
         run: |
           (cd docs && make linkcheck)
-
-      - name: Send job status notification to Slack
-        uses: 8398a7/action-slack@a189acbf0b7ea434558662ae25a0de71df69a435
-        with:
-          status: ${{ job.status }}
-          author_name: Sphinx linkcheck
-          fields: repo,eventName,ref,workflow
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
