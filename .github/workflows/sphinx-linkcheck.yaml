@@ -1,5 +1,4 @@
-# Reusable workflow to run Sphinx linkcheck on docs,
-# and send job status notification to Slack
+# Reusable workflow to run Sphinx linkcheck on docs
 
 name: sphinx-linkcheck
 
@@ -14,6 +13,10 @@ on:
         type: string
       conda-env-name:
         required: true
+        type: string
+      docs-dir:
+        default: docs
+        required: false
         type: string
 
 jobs:
@@ -39,5 +42,6 @@ jobs:
 
       - name: linkcheck docs
         shell: bash -l {0}
+        working-directory: ${{ docs-dir }}
         run: |
-          (cd docs && make linkcheck)
+          make linkcheck
