@@ -46,5 +46,5 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    uses: UBC-MOAD/gha-workflows/.github/workflows/reusable-auto-assign.yaml@SHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@SHA
 ```
