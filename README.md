@@ -19,3 +19,32 @@ Enable that feature with:
 `/github subscribe org/repo workflows:{event:"pull_request","push" branch:"main"}`
 
 ref: https://github.com/integrations/slack#actions-workflow-notifications
+
+
+## How to Use the Workflows
+
+YAML blobs to use the reusable workflows in other repositories.
+
+**Note:** *Replace the `SHA` at the end of the `uses:` line with the SHA hash of the most recent commit
+of the workflow.*
+
+### `auto-assign`
+
+```yaml
+name: Assign Issue/PR
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+  pull_request:
+    types:
+      - reopened
+      - opened
+jobs:
+  auto_assign:
+    permissions:
+      issues: write
+      pull-requests: write
+    uses: UBC-MOAD/gha-workflows/.github/workflows/reusable-auto-assign@SHA
+```
