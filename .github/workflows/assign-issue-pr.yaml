@@ -1,0 +1,19 @@
+# Automatically assign new or reopened issues and pull requests in this
+# repo to Doug
+
+name: Assign Issue/PR
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+  pull_request:
+    types:
+      - reopened
+      - opened
+jobs:
+  auto_assign:
+    permissions:
+      issues: write
+      pull-requests: write
+    uses: UBC-MOAD/gha-workflows/.github/workflows/reusable-auto-assign@39ab5bcb2c528cc2d1ad922c3b9f918087ef48ff
