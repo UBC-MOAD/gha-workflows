@@ -50,6 +50,36 @@ jobs:
 ```
 
 
+### `codeql-analysis`
+
+**Note:** Each repo should have a different cron schedule.
+
+```yaml
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ '*' ]
+  schedule:
+    - cron: '20 17 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'python' ]
+    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@SHA
+    with:
+      language: ${{ matrix.language }}
+```
+
+
 ### `sphinx-linkcheck`
 
 **Notes:**
