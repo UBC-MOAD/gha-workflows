@@ -48,3 +48,38 @@ jobs:
       pull-requests: write
     uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@SHA
 ```
+
+
+### `sphinx-linkcheck`
+
+**Notes:**
+
+* Each repo should have a different cron schedule.
+  Please see https://salishseacast.slack.com/archives/C01GYJBSF0X/p1608574921004500
+* Be sure to set the `conda-env-name:` value correctly
+
+```yaml
+name: sphinx-linkcheck
+
+on:
+  push:
+    branches: [ '*' ]
+  schedule:
+    - cron: 43 10 13 * *  # 10:43 UTC on the 4th day of each month
+
+jobs:
+  sphinx-linkcheck:
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Need to specify Python version here because we use test env which gets its
+        # Python version via matrix
+        python-version: [ '3.10' ]
+    uses: UBC-MOAD/gha-workflows/.github/workflows/sphinx-linkcheck.yaml@SHA
+    with:
+      python-version: ${{ matrix.python-version }}
+      conda-env-file: envs/environment-test.yaml
+      conda-env-name: moacean-parcels-test
+```
