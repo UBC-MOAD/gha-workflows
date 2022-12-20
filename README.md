@@ -79,6 +79,33 @@ jobs:
       language: ${{ matrix.language }}
 ```
 
+### pytest-with-coverage
+
+**Note:** Be sure to set the `conda-env-name:` value correctly.
+
+```yaml
+name: pytest-with-coverage
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  pytest-with-coverage:
+    permissions:
+      contents: read
+      pull-requests: write
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ '3.10', '3.11' ]
+    uses: UBC-MOAD/gha-workflows/.github/workflows/pytest-with-coverage.yaml@SHA
+    with:
+      python-version: ${{ matrix.python-version }}
+      conda-env-file: envs/environment-test.yaml
+      conda-env-name: <test-env-name>
+```
+
 
 ### `sphinx-linkcheck`
 
@@ -106,10 +133,10 @@ jobs:
       matrix:
         # Need to specify Python version here because we use test env which gets its
         # Python version via matrix
-        python-version: [ '3.10' ]
+        python-version: [ '3.11' ]
     uses: UBC-MOAD/gha-workflows/.github/workflows/sphinx-linkcheck.yaml@SHA
     with:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
-      conda-env-name: moacean-parcels-test
+      conda-env-name: <test-env-name>
 ```
