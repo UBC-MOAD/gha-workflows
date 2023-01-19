@@ -10,6 +10,10 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 
 ## Changes
 
+### 19-Jan-2023
+
+Added `gha_workflows_checker.py` utility script from https://github.com/UBC-MOAD/gha-workflows-checker.
+
 ### 2-Dec-2022
 
 Changed to rely on the Slack github app workflows subscription feature to send workflow status
@@ -140,4 +144,20 @@ jobs:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
       conda-env-name: <test-env-name>
+```
+
+
+## `gha_workflows_checker.py` Script
+
+Use GitHub CLI tool to list GitHub Actions workflows in repositories with their
+enabled/disabled status.
+
+Initial impetus for this script was to provide an easy way to check for GitHub's automatic
+disabling of scheduled sphinx-linkcheck workflows in repos that haven't had activity for >60d.
+
+Run via gha_workflows_checker run/debug config in VS Code, or in a terminal via:
+
+```bash
+$ conda activate gha-workflows
+(gha-workflows)$ python3 gha_workflow_checker/gha_workflow_checker.py
 ```
