@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gha_workflows_checker",
+            "type": "python",
+            "request": "launch",
+            "program": "gha_workflow_checker/gha_workflows_checker.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
