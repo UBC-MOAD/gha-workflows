@@ -31,9 +31,6 @@ ref: https://github.com/integrations/slack#actions-workflow-notifications
 
 YAML blobs to use the reusable workflows in other repositories.
 
-**Note:** *Replace the `SHA` at the end of the `uses:` line with the SHA hash of the most recent commit
-of the workflow.*
-
 ### `auto-assign`
 
 ```yaml
@@ -52,7 +49,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@SHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@main
 ```
 
 
@@ -80,7 +77,7 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'python' ]
-    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@SHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@SmainHA
     with:
       language: ${{ matrix.language }}
 ```
@@ -105,7 +102,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [ '3.10', '3.11' ]
-    uses: UBC-MOAD/gha-workflows/.github/workflows/pytest-with-coverage.yaml@SHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/pytest-with-coverage.yaml@main
     with:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
@@ -140,7 +137,7 @@ jobs:
         # Need to specify Python version here because we use test env which gets its
         # Python version via matrix
         python-version: [ '3.11' ]
-    uses: UBC-MOAD/gha-workflows/.github/workflows/sphinx-linkcheck.yaml@SHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/sphinx-linkcheck.yaml@main
     with:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
