@@ -162,3 +162,9 @@ Run via `gha_workflows_checker` run/debug config in VS Code, or in a terminal vi
 $ conda activate gha-workflows
 (gha-workflows)$ python3 gha_workflow_checker/gha_workflow_checker.py
 ```
+
+Disabled workflows can be re-enabled with commands like:
+
+```bash
+(gha-workflows)$ gh workflow enable -R UBC-MOAD/moad_tools CodeQL
+```
