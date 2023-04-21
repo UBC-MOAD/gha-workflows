@@ -28,7 +28,7 @@ jobs:
         with:
            environment-file: ${{ inputs.conda-env-file }}
            environment-name: ${{ inputs.conda-env-name }}
-           cache-env: true
+           cache-downloads: true
            extra-specs: |
              python=${{ inputs.python-version }}
 
