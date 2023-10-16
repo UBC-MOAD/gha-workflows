@@ -157,7 +157,7 @@ Run via `gha_workflows_checker` run/debug config in VS Code, or in a terminal vi
 
 ```bash
 $ conda activate gha-workflows
-(gha-workflows)$ python3 gha_workflow_checker/gha_workflow_checker.py
+(gha-workflows)$ python3 gha_workflow_checker/gha_workflows_checker.py
 ```
 
 Disabled workflows can be re-enabled with commands like:
