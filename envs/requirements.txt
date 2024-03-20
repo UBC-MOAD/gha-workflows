@@ -3,7 +3,7 @@
 # Create/update this file with:
 #   (gha-workflows)$ python3 -m pip list --format=freeze >> envs/requirements.txt
 
-black==22.12.0
+black==24.3.0
 cffi==1.15.1
 cfgv==3.3.1
 click==8.1.3
