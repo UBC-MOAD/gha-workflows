@@ -4,6 +4,7 @@
         "codeql",
         "linkcheck",
         "Mambaforge",
+        "Micromamba",
         "MIDOSS",
         "miniconda",
         "miniforge",
