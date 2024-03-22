@@ -9,11 +9,23 @@
 
 Reusable GitHub Actions workflows for MOAD repositories and workflow management tools
 
+
 ## Changes
+
+### 22-Mar-2024
+
+Added Codecov token to `pytest-with-coverage` workflow to re-enable coverage
+report comments in pull requests.
+Tokens became required for that functionality with Codecov's change to v4.0.0
+of its GitHub action.
+
+ref: https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
+
 
 ### 19-Jan-2023
 
 Added `gha_workflows_checker.py` utility script from https://github.com/UBC-MOAD/gha-workflows-checker.
+
 
 ### 2-Dec-2022
 
@@ -84,7 +96,13 @@ jobs:
 
 ### pytest-with-coverage
 
-**Note:** Be sure to set the `conda-env-name:` value correctly.
+**Notes:**
+
+* A Codecov token is required for coverage results to be uploaded to
+  Codecov and coverage report comments to appear in pull requests.
+  Codecov tokens are generated as global upload tokens for organizations
+  on Codecov and stored as organization secrets named CODECOV_TOKEN on GitHub.
+* Be sure to set the `conda-env-name:` value correctly.
 
 ```yaml
 name: pytest-with-coverage
@@ -107,6 +125,7 @@ jobs:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
       conda-env-name: <test-env-name>
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 ```
 
 
