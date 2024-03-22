@@ -125,6 +125,7 @@ jobs:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
       conda-env-name: <test-env-name>
+    secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 ```
 
