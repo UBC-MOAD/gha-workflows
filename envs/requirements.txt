@@ -27,5 +27,5 @@ setuptools==70.0.0
 toml==0.10.2
 typing_extensions==4.4.0
 ukkonen==1.0.1
-virtualenv==20.17.1
+virtualenv==20.26.6
 wheel==0.38.4
