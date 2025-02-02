@@ -9,7 +9,7 @@ jobs:
   add_milestone:
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: benelan/milestone-action@v3
+      - uses: benelan/milestone-action@ae503769af66e741a9d7f76052058e1c3054fd7e
         with:
           # If true, add the milestone with the farthest due date. By default,
           # the action adds the current milestone (the closest due date).
