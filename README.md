@@ -12,6 +12,12 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 
 ## Changes
 
+### 2-Feb-2024
+
+Added `auto-milestone-issue-pr.yaml` workflow to automatically add current milestone to new issues
+and PRs.
+
+
 ### 22-Mar-2024
 
 Added Codecov token to `pytest-with-coverage` workflow to re-enable coverage
@@ -47,6 +53,7 @@ YAML blobs to use the reusable workflows in other repositories.
 
 ```yaml
 name: Assign Issue/PR
+
 on:
   issues:
     types:
@@ -56,12 +63,37 @@ on:
     types:
       - reopened
       - opened
+
 jobs:
   auto_assign:
     permissions:
       issues: write
       pull-requests: write
     uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@main
+```
+
+
+### `auto-milestone-issue-pr`
+
+```yaml
+name: Add Milestone to Issue/PR
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+
+jobs:
+  add_milestone:
+    permissions:
+      issues: write
+      pull-requests: write
+    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-milestone-issue-pr.yaml@main
 ```
 
 
