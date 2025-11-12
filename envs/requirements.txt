@@ -3,27 +3,27 @@
 # Create/update this file with:
 #   (gha-workflows)$ python -m pip list --format=freeze >> envs/requirements.txt
 
-black==24.10.0
-cffi==1.17.1
+black==25.1.0
+cffi==2.0.0
 cfgv==3.3.1
-click==8.1.8
-distlib==0.3.9
-filelock==3.16.1
-identify==2.6.5
-markdown-it-py==3.0.0
+click==8.3.0
+distlib==0.4.0
+filelock==3.20.0
+identify==2.6.15
+markdown-it-py==4.0.0
 mdurl==0.1.2
-mypy_extensions==1.0.0
+mypy_extensions==1.1.0
 nodeenv==1.9.1
-packaging==24.2
+packaging==25.0
 pathspec==0.12.1
 pip==25.3
-platformdirs==4.3.6
-pre_commit==4.0.1
+platformdirs==4.5.0
+pre_commit==4.4.0
 pycparser==2.22
-Pygments==2.19.1
-PyYAML==6.0.2
-rich==13.9.4
-setuptools==78.1.1
-typing_extensions==4.12.2
+Pygments==2.19.2
+PyYAML==6.0.3
+rich==14.2.0
+setuptools==80.9.0
+typing_extensions==4.15.0
 ukkonen==1.0.1
-virtualenv==20.28.1
+virtualenv==20.35.4
