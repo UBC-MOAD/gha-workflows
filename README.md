@@ -216,3 +216,19 @@ Disabled workflows can be re-enabled with commands like:
 ```bash
 pixi run gh -R UBC-MOAD/moad_tools workflow enable CodeQL
 ```
+
+
+## Repository Maintenance
+
+In Dec-2025,
+when project and environment management was changed to use `pixi`,
+dependabot does not support providing security update notifications and PRs based on the `pixi.lock`
+file.
+We continue to obtain that service from GitHub by retaining the `requirements.txt` file.
+To update it,
+delete the packages list from the file,
+then use the command:
+
+```bash
+pixi run update-reqs
+```
