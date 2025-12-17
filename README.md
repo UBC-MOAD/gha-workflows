@@ -12,6 +12,11 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 
 ## Changes
 
+### 17-Dec-2025
+
+Changed to use [Pixi](https://pixi.sh/latest/) for project and environment management.
+
+
 ### 2-Feb-2024
 
 Added `auto-milestone-issue-pr.yaml` workflow to automatically add current milestone to new issues
