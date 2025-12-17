@@ -17,7 +17,7 @@ UBC-MOAD:
   - docs
   - gha-workflows
   - MoaceanParcels
-  - moad_tools  # Refactored-linkcheck 40347625 is disabled; test workflow
+  - moad_tools
   - Reshapr
   - cookiecutter-analysis-repo
   - cookiecutter-MOAD-pypkg
