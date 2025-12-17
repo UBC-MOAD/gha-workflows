@@ -126,7 +126,7 @@ jobs:
       language: ${{ matrix.language }}
 ```
 
-### pytest-with-coverage
+### `pytest-with-coverage`
 
 **Notes:**
 
