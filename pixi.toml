@@ -1,0 +1,18 @@
+[workspace]
+authors = ["Doug Latornell <dlatornell@eoas.ubc.ca>"]
+channels = ["conda-forge"]
+name = "gha-workflows"
+platforms = ["linux-64"]
+version = "25.1.dev0"
+
+[tasks]
+
+[dependencies]
+gh = "*"
+python = "3.14.*"
+pyyaml = "*"
+rich = "*"
+
+# For code style & repo QA
+black = "*"
+pre-commit = "*"
