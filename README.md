@@ -17,12 +17,6 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 Changed to use [Pixi](https://pixi.sh/latest/) for project and environment management.
 
 
-### 2-Feb-2024
-
-Added `auto-milestone-issue-pr.yaml` workflow to automatically add current milestone to new issues
-and PRs.
-
-
 ### 22-Mar-2024
 
 Added Codecov token to `pytest-with-coverage` workflow to re-enable coverage
@@ -31,6 +25,12 @@ Tokens became required for that functionality with Codecov's change to v4.0.0
 of its GitHub action.
 
 ref: https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
+
+
+### 2-Feb-2024
+
+Added `auto-milestone-issue-pr.yaml` workflow to automatically add current milestone to new issues
+and PRs.
 
 
 ### 19-Jan-2023
