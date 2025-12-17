@@ -199,21 +199,20 @@ jobs:
 
 ## `gha_workflows_checker.py` Script
 
-Use GitHub CLI tool to list GitHub Actions workflows in repositories with their
+Use the GitHub CLI tool to list GitHub Actions workflows in repositories with their
 enabled/disabled status.
 
-Initial impetus for this script was to provide an easy way to check for GitHub's automatic
-disabling of scheduled sphinx-linkcheck workflows in repos that haven't had activity for >60d.
+The Initial impetus for this script was to provide an easy way to check for GitHub's automatic
+disabling of scheduled `sphinx-linkcheck` workflows in repos that haven't had activity for >60d.
 
-Run via `gha_workflows_checker` run/debug config in VS Code, or in a terminal via:
+Run in a terminal via:
 
 ```bash
-$ conda activate gha-workflows
-(gha-workflows)$ python3 gha_workflow_checker/gha_workflows_checker.py
+pixi run check
 ```
 
 Disabled workflows can be re-enabled with commands like:
 
 ```bash
-(gha-workflows)$ gh workflow enable -R UBC-MOAD/moad_tools CodeQL
+pixi run gh -R UBC-MOAD/moad_tools workflow enable CodeQL
 ```
