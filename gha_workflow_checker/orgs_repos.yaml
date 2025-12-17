@@ -28,6 +28,7 @@ UBC-MOAD:
 
 douglatornell:
   - FUN
+  - cookiecutter-djl-pypkg
 
 # MIDOSS repos were archived on 16-Dec-2022
 # MIDOSS:
