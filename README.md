@@ -2,9 +2,9 @@
 | | |
 | --- | --- |
 | CI | [![CodeQL analysis](https://github.com/UBC-MOAD/gha-workflows/actions/workflows/codeql-analysis-this-repo.yaml/badge.svg)](https://github.com/UBC-MOAD/gha-workflows/actions?query=workflow:CodeQL) |
-| Python | [![Python Version](https://img.shields.io/badge/Python-3.13-blue?logo=python&label=Python&logoColor=gold)](https://docs.python.org/3/) |
+| Python | [![Python Version](https://img.shields.io/badge/Python-3.14-blue?logo=python&label=Python&logoColor=gold)](https://docs.python.org/3/) |
 | Issue Tracker | [![Issue Tracker](https://img.shields.io/github/issues/UBC-MOAD/gha-workflows?logo=github)](https://github.com/UBC-MOAD/Reshapr/issues) |
-| Meta | [![Licensed under the Apache License, Version 2.0](https://img.shields.io/badge/license-Apache%202-cb2533.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Git on GitHub](https://img.shields.io/badge/version%20control-git-blue.svg?logo=github)](https://github.com/UBC-MOAD/gha-workflows) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![The uncompromising Python code formatter](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/en/stable/) |
+| Meta | [![Licensed under the Apache License, Version 2.0](https://img.shields.io/badge/license-Apache%202-cb2533.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Git on GitHub](https://img.shields.io/badge/version%20control-git-blue.svg?logo=github)](https://github.com/UBC-MOAD/gha-workflows) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![The uncompromising Python code formatter](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/en/stable/) [![Pixi Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh) |
 
 
 Reusable GitHub Actions workflows for MOAD repositories and workflow management tools
@@ -121,7 +121,7 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'python' ]
-    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@SmainHA
+    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@SHA
     with:
       language: ${{ matrix.language }}
 ```
@@ -199,21 +199,36 @@ jobs:
 
 ## `gha_workflows_checker.py` Script
 
-Use GitHub CLI tool to list GitHub Actions workflows in repositories with their
+Use the GitHub CLI tool to list GitHub Actions workflows in repositories with their
 enabled/disabled status.
 
-Initial impetus for this script was to provide an easy way to check for GitHub's automatic
-disabling of scheduled sphinx-linkcheck workflows in repos that haven't had activity for >60d.
+The Initial impetus for this script was to provide an easy way to check for GitHub's automatic
+disabling of scheduled `sphinx-linkcheck` workflows in repos that haven't had activity for >60d.
 
-Run via `gha_workflows_checker` run/debug config in VS Code, or in a terminal via:
+Run in a terminal via:
 
 ```bash
-$ conda activate gha-workflows
-(gha-workflows)$ python3 gha_workflow_checker/gha_workflows_checker.py
+pixi run check
 ```
 
 Disabled workflows can be re-enabled with commands like:
 
 ```bash
-(gha-workflows)$ gh workflow enable -R UBC-MOAD/moad_tools CodeQL
+pixi run gh -R UBC-MOAD/moad_tools workflow enable CodeQL
+```
+
+
+## Repository Maintenance
+
+In Dec-2025,
+when project and environment management was changed to use `pixi`,
+dependabot does not support providing security update notifications and PRs based on the `pixi.lock`
+file.
+We continue to obtain that service from GitHub by retaining the `requirements.txt` file.
+To update it,
+delete the packages list from the file,
+then use the command:
+
+```bash
+pixi run update-reqs
 ```
