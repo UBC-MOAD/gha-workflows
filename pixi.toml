@@ -7,9 +7,11 @@ version = "25.1.dev0"
 
 [tasks]
 check = { cmd = "python gha_workflows_checker.py", cwd = "gha_workflow_checker" }
+update-reqs = "python -m pip list --format=freeze >> requirements.txt"
 
 [dependencies]
 gh = "*"
+pip = "*"
 python = "3.14.*"
 pyyaml = "*"
 rich = "*"
