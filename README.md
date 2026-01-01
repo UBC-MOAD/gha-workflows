@@ -12,6 +12,12 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 
 ## Changes
 
+### 31-Dec-2025
+
+Added [Pixi](https://pixi.sh/latest/) versions of `pytest-with-coverage` and `sphinx-linkcheck`
+workflows.
+
+
 ### 17-Dec-2025
 
 Changed to use [Pixi](https://pixi.sh/latest/) for project and environment management.
