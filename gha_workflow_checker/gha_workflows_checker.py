@@ -26,7 +26,6 @@ Run via gha_workflows_checker run/debug config in VS Code, or in a terminal via:
     (gha-workflows)$ python3 gha_workflow_checker/gha_workflow_checker.py
 """
 
-
 from pathlib import Path
 import shlex
 import subprocess
