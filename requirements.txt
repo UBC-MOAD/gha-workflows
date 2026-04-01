@@ -23,7 +23,7 @@ pip==26.0
 platformdirs==4.5.1
 pre_commit==4.5.1
 pycparser==2.22
-Pygments==2.19.2
+Pygments==2.20.0
 pytokens==0.3.0
 PyYAML==6.0.3
 rich==14.2.0
