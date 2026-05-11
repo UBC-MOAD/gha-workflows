@@ -10,12 +10,12 @@ check = { cmd = "python gha_workflows_checker.py", cwd = "gha_workflow_checker" 
 update-reqs = "python -m pip list --format=freeze >> requirements.txt"
 
 [dependencies]
-gh = "*"
-pip = "*"
+gh = ">=2.92.0,<3"
+pip = ">=26.1.1,<27"
 python = "3.14.*"
-pyyaml = "*"
-rich = "*"
+pyyaml = ">=6.0.3,<7"
+rich = ">=15.0.0,<16"
 
 # For code style & repo QA
-black = "*"
-pre-commit = "*"
+black = ">=26.1.0,<27"
+pre-commit = ">=4.6.0,<5"
