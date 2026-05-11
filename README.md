@@ -12,6 +12,11 @@ Reusable GitHub Actions workflows for MOAD repositories and workflow management 
 
 ## Changes
 
+### 11-May-2026
+
+Added `update-pixi-lockfile.yaml` workflow to xxx.
+
+
 ### 31-Dec-2025
 
 Added [Pixi](https://pixi.sh/latest/) versions of `pytest-with-coverage` and `sphinx-linkcheck`
@@ -205,6 +210,33 @@ jobs:
       python-version: ${{ matrix.python-version }}
       conda-env-file: envs/environment-test.yaml
       conda-env-name: <test-env-name>
+```
+
+
+### `pixi-lockfile-updater`
+
+**Notes:**
+
+* Each repo should have a different cron schedule.
+  Please see https://salishseacast.slack.com/archives/C01GYJBSF0X/p1608574921004500
+
+```yaml
+name: update-pixi-lockfile
+
+on:
+  # Enable workflow to be triggered from GitHub CLI, browser, or via API
+  workflow_dispatch:
+
+  schedule:
+    - cron: 43 5 6 * *  # 05:43 UTC on the 6th day of each month
+
+jobs:
+  update-pixi-lockfile:
+    permissions:
+      contents: write
+      pull-requests: write
+
+    uses: UBC-MOAD/gha-workflows/.github/workflows/pixi-lockfile-updater.yaml@main
 ```
 
 
