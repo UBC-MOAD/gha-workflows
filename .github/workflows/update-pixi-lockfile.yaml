@@ -16,5 +16,3 @@ jobs:
       pull-requests: write
 
     uses: UBC-MOAD/gha-workflows/.github/workflows/pixi-lockfile-updater.yaml@main
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
