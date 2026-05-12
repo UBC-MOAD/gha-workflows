@@ -2,6 +2,11 @@
 
 name: pixi-lockfile-updater
 
+on:
+  workflow_call:
+    # No inputs or secrets needed for this workflow, but we still need to specify
+    # the on.workflow_call trigger to make this a reusable workflow.
+
 jobs:
   pixi-update:
     runs-on: ubuntu-latest
