@@ -2,6 +2,8 @@
 
 name: auto-milestone-issue-pr
 
+permissions: {}
+
 on:
   workflow_call:
 

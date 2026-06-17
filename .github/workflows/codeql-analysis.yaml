@@ -3,6 +3,8 @@
 
 name: codeql-analysis
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:

@@ -2,6 +2,8 @@
 
 name: pixi-lockfile-updater
 
+permissions: {}
+
 on:
   workflow_call:
     # No inputs or secrets needed for this workflow, but we still need to specify

@@ -3,6 +3,8 @@
 
 name: pytest-with-coverage
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:

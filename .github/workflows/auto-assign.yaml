@@ -2,6 +2,8 @@
 
 name: auto-assign
 
+permissions: {}
+
 on:
   workflow_call:
 
