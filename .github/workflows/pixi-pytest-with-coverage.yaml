@@ -32,7 +32,9 @@ jobs:
           environments: ${{ inputs.environment }}
 
       - name: Run pytest-with-coverage
-        run: pixi run -e ${{ inputs.environment }} pytest --cov=$GITHUB_WORKSPACE --cov-report=xml
+        run: pixi run -e ${INPUTS_ENVIRONMENT} pytest --cov=$GITHUB_WORKSPACE --cov-report=xml
+        env:
+          INPUTS_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
