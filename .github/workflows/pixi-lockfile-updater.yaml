@@ -30,8 +30,10 @@ jobs:
 
       - name: Create pull request
         # Ignore the zizmor excessive-permissions warning because this is in a reusable workflow
-        # and the permissions required to run the action depend on the context of the caller workflow
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # zizmor: ignore[excessive-permissions]
+        # and the permissions required to run the action depend on the context of the caller workflow.
+        # Also ignore the superfluous-actions warning because the Pixi developers recommend this configuration,
+        # and replacing it with a direct calls to the GitHub API would add unnecessary complexity.
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # zizmor: ignore[excessive-permissions, superfluous-actions]
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update pixi lockfile
