@@ -9,6 +9,7 @@ on:
 
 jobs:
   assign:
+    name: Auto-assign to Doug
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/github-script@v9  # zizmor: ignore[unpinned-uses]

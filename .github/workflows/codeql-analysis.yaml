@@ -14,6 +14,7 @@ on:
 
 jobs:
   codeql-analysis:
+    name: CodeQL analysis for ${{ inputs.language }}
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout repository

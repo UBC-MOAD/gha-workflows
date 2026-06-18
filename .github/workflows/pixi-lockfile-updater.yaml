@@ -11,6 +11,7 @@ on:
 
 jobs:
   pixi-update:
+    name: Update pixi lockfile and create pull request
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

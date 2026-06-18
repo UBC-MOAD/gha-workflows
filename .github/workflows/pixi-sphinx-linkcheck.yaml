@@ -9,8 +9,8 @@ on:
 
 jobs:
   sphinx-linkcheck:
+    name: Sphinx linkcheck via Pixi
     runs-on: 'ubuntu-latest'
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
