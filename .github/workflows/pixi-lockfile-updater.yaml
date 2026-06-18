@@ -2,6 +2,8 @@
 
 name: pixi-lockfile-updater
 
+permissions: {}
+
 on:
   workflow_call:
     # No inputs or secrets needed for this workflow, but we still need to specify
@@ -9,10 +11,13 @@ on:
 
 jobs:
   pixi-update:
+    name: Update pixi lockfile and create pull request
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
+        with:
+          persist-credentials: false  # Required to avoid exposing secrets to the lockfile update process in forked PRs
 
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@5185adfbffb4bd703da3010310260805d89ebb11

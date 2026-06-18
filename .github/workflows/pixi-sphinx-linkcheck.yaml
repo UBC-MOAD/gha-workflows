@@ -2,16 +2,20 @@
 
 name: pixi-sphinx-linkcheck
 
+permissions: {}
+
 on:
   workflow_call:
 
 jobs:
   sphinx-linkcheck:
+    name: Sphinx linkcheck via Pixi
     runs-on: 'ubuntu-latest'
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
+        with:
+          persist-credentials: false  # Required to avoid exposing secrets to the linkcheck process in forked PRs
 
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@5185adfbffb4bd703da3010310260805d89ebb11

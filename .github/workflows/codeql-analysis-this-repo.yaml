@@ -1,5 +1,7 @@
 name: "CodeQL"
 
+permissions: {}
+
 on:
   push:
     branches: [ '*' ]
@@ -10,13 +12,13 @@ jobs:
   analyze:
     name: Analyze
     permissions:
-      actions: read
-      contents: read
-      security-events: write
+      actions: read  # Required to checkout code and run CodeQL analysis
+      contents: read  # Required to checkout code and run CodeQL analysis
+      security-events: write  # Required to upload CodeQL analysis results
     strategy:
       fail-fast: false
       matrix:
         language: [ 'python' ]
-    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@main
+    uses: UBC-MOAD/gha-workflows/.github/workflows/codeql-analysis.yaml@main  # zizmor: ignore[unpinned-uses]
     with:
       language: ${{ matrix.language }}

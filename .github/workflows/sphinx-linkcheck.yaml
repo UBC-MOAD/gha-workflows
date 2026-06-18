@@ -2,6 +2,8 @@
 
 name: sphinx-linkcheck
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
@@ -21,10 +23,13 @@ on:
 
 jobs:
   sphinx-linkcheck:
+    name: Sphinx linkcheck in ${{ inputs.conda-env-name }} environment
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
+        with:
+          persist-credentials: false  # Required to avoid exposing secrets to the linkcheck process in forked PRs
 
       - name: Get current date for downloads cache key
         id: date

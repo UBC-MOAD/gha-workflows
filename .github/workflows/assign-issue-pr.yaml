@@ -2,6 +2,9 @@
 # repo to Doug
 
 name: Assign Issue/PR
+
+permissions: {}
+
 on:
   issues:
     types:
@@ -11,9 +14,10 @@ on:
     types:
       - reopened
       - opened
+
 jobs:
   auto_assign:
     permissions:
-      issues: write
-      pull-requests: write
-    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@main
+      issues: write  # Required to add assignees to issues
+      pull-requests: write  # Required to add assignees to pull requests
+    uses: UBC-MOAD/gha-workflows/.github/workflows/auto-assign.yaml@main  # zizmor: ignore[unpinned-uses]

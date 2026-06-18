@@ -2,14 +2,17 @@
 
 name: auto-assign
 
+permissions: {}
+
 on:
   workflow_call:
 
 jobs:
   assign:
+    name: Auto-assign to Doug
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: actions/github-script@v9
+      - uses: actions/github-script@v9  # zizmor: ignore[unpinned-uses]
         with:
           script: |
             github.rest.issues.addAssignees({

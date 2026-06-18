@@ -3,6 +3,8 @@
 
 name: pixi-pytest-with-coverage
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
@@ -16,10 +18,13 @@ on:
 
 jobs:
   pytest-with-coverage:
+    name: pytest with coverage in ${{ inputs.environment }} environment
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
+        with:
+          persist-credentials: false  # Required to avoid exposing secrets to pytest run in forked PRs
 
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@5185adfbffb4bd703da3010310260805d89ebb11
@@ -28,7 +33,9 @@ jobs:
           environments: ${{ inputs.environment }}
 
       - name: Run pytest-with-coverage
-        run: pixi run -e ${{ inputs.environment }} pytest --cov=$GITHUB_WORKSPACE --cov-report=xml
+        run: pixi run -e ${INPUTS_ENVIRONMENT} pytest --cov=$GITHUB_WORKSPACE --cov-report=xml
+        env:
+          INPUTS_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
