@@ -14,6 +14,7 @@ jobs:
     permissions:
       actions: read  # Required to checkout code and run CodeQL analysis
       contents: read  # Required to checkout code and run CodeQL analysis
+      id-token: write  # Required to authenticate with CodeQL analysis runner
       security-events: write  # Required to upload CodeQL analysis results
     strategy:
       fail-fast: false
