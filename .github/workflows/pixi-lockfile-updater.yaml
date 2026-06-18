@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6  # zizmor: ignore[unpinned-uses]
+        with:
+          persist-credentials: false  # Required to avoid exposing secrets to the lockfile update process in forked PRs
 
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@5185adfbffb4bd703da3010310260805d89ebb11
