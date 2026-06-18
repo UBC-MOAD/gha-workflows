@@ -14,7 +14,6 @@ on:
 jobs:
   update-pixi-lockfile:
     name: Update pixi lockfile and create pull request
-    runs-on: ubuntu-latest
     permissions:
       contents: write  # Required to create pull request with updated lockfile
       pull-requests: write  # Required to create pull request with updated lockfile
