@@ -2,8 +2,6 @@
 
 name: auto-assign
 
-permissions: {}
-
 on:
   workflow_call:
 
@@ -12,7 +10,9 @@ jobs:
     name: Auto-assign to Doug
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: actions/github-script@v9  # zizmor: ignore[unpinned-uses]
+      # Ignore the zizmor excessive-permissions warning because this is in a reusable workflow
+      # and the permissions required to run the script depend on the context of the caller workflow
+      - uses: actions/github-script@v9  # zizmor: ignore[unpinned-uses, excessive-permissions]
         with:
           script: |
             github.rest.issues.addAssignees({

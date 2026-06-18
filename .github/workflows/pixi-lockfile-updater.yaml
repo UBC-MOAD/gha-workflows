@@ -2,8 +2,6 @@
 
 name: pixi-lockfile-updater
 
-permissions: {}
-
 on:
   workflow_call:
     # No inputs or secrets needed for this workflow, but we still need to specify
@@ -31,7 +29,9 @@ jobs:
           pixi update --json | pixi exec pixi diff-to-markdown >> diff.md
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
+        # Ignore the zizmor excessive-permissions warning because this is in a reusable workflow
+        # and the permissions required to run the action depend on the context of the caller workflow
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # zizmor: ignore[excessive-permissions]
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update pixi lockfile

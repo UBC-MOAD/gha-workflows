@@ -26,4 +26,6 @@ jobs:
           languages: ${{ inputs.language }}
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4  # zizmor: ignore[unpinned-uses]
+        # Ignore the zizmor excessive-permissions warning because this is in a reusable workflow
+        # and the permissions required to run the analysis depend on the context of the caller workflow
+        uses: github/codeql-action/analyze@v4  # zizmor: ignore[unpinned-uses, excessive-permissions]

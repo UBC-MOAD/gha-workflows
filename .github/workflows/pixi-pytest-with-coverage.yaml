@@ -3,8 +3,6 @@
 
 name: pixi-pytest-with-coverage
 
-permissions: {}
-
 on:
   workflow_call:
     inputs:
@@ -38,7 +36,9 @@ jobs:
           INPUTS_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
+        # Ignore the zizmor excessive-permissions warning because this is in a reusable workflow
+        # and the permissions required to run the action depend on the context of the caller workflow
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f  # zizmor: ignore[excessive-permissions]
         with:
           files: ./coverage.xml
           flags: unittests
