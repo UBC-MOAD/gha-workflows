@@ -6,7 +6,7 @@
 # Update this file with:
 #   pixi run update-reqs
 
-black==26.5.1
+black==26.10.1
 cffi==2.0.0
 cfgv==3.5.0
 click==8.4.1
