@@ -11,7 +11,7 @@ cffi==2.0.0
 cfgv==3.5.0
 click==8.4.1
 distlib==0.4.1
-filelock==3.29.1
+filelock==4.2.1
 identify==2.6.19
 importlib_metadata==9.0.0
 markdown-it-py==4.2.0
