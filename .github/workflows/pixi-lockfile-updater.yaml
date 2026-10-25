@@ -41,6 +41,9 @@ jobs:
           body-path: diff.md
           branch: update-pixi
           base: main
-          labels: pixi
+          labels: |
+            dependencies
+            pixi
+          assignees: douglatornell
           delete-branch: true
           add-paths: pixi.lock
